@@ -35,6 +35,9 @@
   return fn
 }
 
+/// Define values from a dictionary.
+/// - data (dictionary): The values to define.
+/// - from (state): The scope to define the values in.
 #let from-scope(data, from: scope) = {
   type-check(data, z.dictionary((:)))
 
@@ -44,4 +47,14 @@
     }
     return inner
   })
+}
+
+/// Define values from a TOML file.
+/// - file (string): The path to the TOML file.
+/// - from (state): The scope to define the values in.
+#let from-toml(file, from: scope) = {
+  type-check(file, z.string())
+
+  let scope = toml(file)
+  from-scope(scope, from: from)
 }

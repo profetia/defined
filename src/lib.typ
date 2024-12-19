@@ -1,1 +1,1 @@
-#import "defined.typ": defined, define, from-scope
+#import "defined.typ": defined, define, from-scope, from-toml

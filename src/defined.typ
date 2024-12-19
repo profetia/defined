@@ -10,16 +10,16 @@
 /// - from (state): The database to check the value in.
 /// -> (boolean): Whether the value is defined.
 #let defined(name, from: database) = {
-  type-check(name, z.string())
+  type-check(name, z.either(z.content(), z.string()))
 
   let real-name = stringfy(name)
 
   if type(from) == state {
-    context type-check(from.get(), z.dictionary())
-    return context from.get().keys().contains(real-name)
+    type-check(from.get(), z.dictionary((:)))
+    return from.get().keys().contains(real-name)
   }
 
-  type-check(from, z.dictionary())
+  type-check(from, z.dictionary((:)))
   return from.keys().contains(real-name)
 }
 

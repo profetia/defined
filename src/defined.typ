@@ -27,6 +27,10 @@
 
   let fn(value) = {
     from.update((inner) => {
+      if inner.keys().contains(real-name) {
+        error("\"" + real-name + "\" redefined.")
+      }
+
       inner.insert(real-name, value)
       return inner
     })
@@ -43,6 +47,10 @@
 
   from.update((inner) => {
     for (key, value) in data {
+      if inner.keys().contains(key) {
+        error("Value " + key + " is already defined.")
+      }
+
       inner.insert(key, value)
     }
     return inner

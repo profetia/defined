@@ -1,5 +1,13 @@
 #import "@preview/valkyrie:0.2.1" as z
 
+/// Raise an error.
+/// - message (string): The error message.
+#let error(message) = {
+  let _ = z.parse(message, z.string())
+
+  assert(false, message: message)
+}
+
 /// Perform a type check on a value.
 /// - type (dictionary): The type to check the value against.
 /// -> (function): A function that takes a value and checks it against the type.
@@ -10,7 +18,7 @@
   }
 
   if type(value) != schema {
-    assert(false, message: "Schema validation failed on argument: Expected " + (schema) + ". Got " + (type(value)))
+    error("Schema validation failed on argument: Expected " + (schema) + ". Got " + (type(value)))
   }
 }
 

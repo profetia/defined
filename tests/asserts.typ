@@ -50,9 +50,22 @@
   [run `test-sys` successfully]
 }
 
+#let test-undef = {
+  let scope = state("--test-undef", (:))
+
+  define("foo", from: scope)(true)
+  context assert(defined("foo", from: scope))
+
+  undef("foo", from: scope)
+  context assert(not defined("foo", from: scope))
+
+  [run `test-undef` successfully]
+}
+
 = Run tests (#datetime.today().display())
 
 - #test-define
 - #test-from-scope
 - #test-from-toml
 - #test-sys
+- #test-undef

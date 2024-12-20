@@ -67,3 +67,14 @@
   from-scope(scope, from: from)
 }
 
+/// Unset a value.
+/// - name (string): The name of the value to unset.
+/// - from (state): The scope to unset the value in.
+#let undef(name, from: scope) = {
+  let real-name = stringfy(name)
+
+  from.update((inner) => {
+    inner.remove(real-name)
+    return inner
+  })
+}

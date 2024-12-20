@@ -28,20 +28,6 @@
   [run `test-from-scope` successfully]
 }
 
-#let test-from-toml = {
-  let scope = state("--test-from-toml", (:))
-
-  context assert(not defined("foo", from: scope))
-  context assert(not defined("bAr", from: scope))
-
-  from-toml("../tests/asserts.toml", from: scope)
-
-  context assert(defined("foo", from: scope))
-  context assert(defined("bAr", from: scope))
-
-  [run `test-from-toml` successfully]
-}
-
 #let test-sys = {
   let has-foo = sys.inputs.keys().contains("foo")
 
@@ -89,7 +75,6 @@
 
 - #test-define
 - #test-from-scope
-- #test-from-toml
 - #test-sys
 - #test-undef
 - #test-resolve

@@ -2,7 +2,6 @@
 
 #import "utils.typ":*
 
-/// A dictionary of defined values.
 #let scope = state("defined-scope", sys.inputs)
 
 /// Check if a value is defined.
@@ -55,16 +54,6 @@
     }
     return inner
   })
-}
-
-/// Define values from a TOML file.
-/// - file (string): The path to the TOML file.
-/// - from (state): The scope to define the values in.
-#let from-toml(file, from: scope) = {
-  type-check(file, z.string())
-
-  let scope = toml(file)
-  from-scope(scope, from: from)
 }
 
 /// Unset a value.

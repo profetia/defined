@@ -4,13 +4,13 @@
 name = ""
 version = "0.1.0"
 entrypoint = "src/lib.typ"
-authors = []
+authors = ["yanglsh <yanglsh@shanghaitech.edu.cn>"]
 license = "Unlicense"
-description = ""
+description = "typst package to make conditional compilation easily"
 homepage = ""
-repository = ""
-keywords = []
-categories = []
+repository = "https://github.com/profetia/defined"
+keywords = ["macro"]
+categories = ["scripting", "utility"]
 disciplines = []
 compiler = ""
 exclude = [
@@ -21,11 +21,3 @@ exclude = [
 	".typstignore",
 	"Justfile",
 ]
-
-# [template]
-# path = "template"
-# entrypoint = "main.typ"
-# thumbnail = "thumbnail.png"
-
-# [tool.mytool]
-# foo = "bar"

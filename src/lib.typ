@@ -1,1 +1,1 @@
-#import "defined.typ": defined, define, from-scope, from-toml, undef, resolve, expand
+#import "defined.typ": defined, define, from-scope, undef, resolve, expand

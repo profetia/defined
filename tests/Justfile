@@ -1,0 +1,9 @@
+[private]
+default:
+	@just --list --unsorted
+
+all: asserts
+
+asserts:
+    typst compile -f pdf asserts.typ /dev/null \
+        --input foo=bar

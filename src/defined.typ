@@ -3,7 +3,7 @@
 #import "utils.typ":*
 
 /// A dictionary of defined values.
-#let scope = state("defined-scope", (:))
+#let scope = state("defined-scope", sys.inputs)
 
 /// Check if a value is defined.
 /// - name (string): The name of the value to check.
@@ -66,3 +66,4 @@
   let scope = toml(file)
   from-scope(scope, from: from)
 }
+

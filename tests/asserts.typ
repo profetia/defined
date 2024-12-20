@@ -1,7 +1,7 @@
-#import "../src/lib.typ": *
+#import "../src/defined.typ": *
 
 #let test-define = {
-  let scope = state("__test-scope", (:))
+  let scope = state("--test-scope", (:))
 
   context assert(not defined("foo", from: scope))
   define("foo", from: scope)(true)
@@ -15,7 +15,7 @@
 }
 
 #let test-from-scope = {
-  let scope = state("__test-from-scope", (:))
+  let scope = state("--test-from-scope", (:))
 
   context assert(not defined("foo", from: scope))
   context assert(not defined("bAr", from: scope))
@@ -29,7 +29,7 @@
 }
 
 #let test-from-toml = {
-  let scope = state("__test-from-toml", (:))
+  let scope = state("--test-from-toml", (:))
 
   context assert(not defined("foo", from: scope))
   context assert(not defined("bAr", from: scope))
@@ -42,8 +42,17 @@
   [run `test-from-toml` successfully]
 }
 
+#let test-sys = {
+  let has-foo = sys.inputs.keys().contains("foo")
+
+  context assert(not has-foo or defined("foo"))
+
+  [run `test-sys` successfully]
+}
+
 = Run tests (#datetime.today().display())
 
 - #test-define
 - #test-from-scope
 - #test-from-toml
+- #test-sys

@@ -11,12 +11,8 @@ doc:
 	typst compile docs/manual.typ docs/manual.pdf
 
 # run test suite
-test *args:
-	typst-test run {{ args }}
-
-# update test cases
-update *args:
-	typst-test update {{ args }}
+test:
+	@just ./tests/ all
 
 # package the library into the specified destination folder
 package target:

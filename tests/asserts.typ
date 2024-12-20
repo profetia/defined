@@ -75,6 +75,16 @@
   [run `test-resolve` successfully]
 }
 
+#let test-expand = {
+  let scope = state("--test-expand", (:))
+
+  define("foo", from: scope)(1)
+  define("bAr", from: scope)(2)
+  context assert.eq(expand("foo + bAr", from: scope), 3)
+
+  [run `test-expand` successfully]
+}
+
 = Run tests (#datetime.today().display())
 
 - #test-define
@@ -83,3 +93,4 @@
 - #test-sys
 - #test-undef
 - #test-resolve
+- #test-expand

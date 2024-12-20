@@ -88,3 +88,12 @@
 
   return from.get().at(real-name, default: none)
 }
+
+/// Evaluate an expression.
+/// - expr (any): The expression to evaluate.
+/// - from (state): The scope to evaluate the expression in.
+/// - mode (string): The mode to evaluate the expression in.
+/// -> (any): The result of the evaluation.
+#let expand(expr, from: scope, mode: "code") = {
+  return eval(expr, mode: mode, scope: from.get())
+}

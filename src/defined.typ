@@ -78,3 +78,13 @@
     return inner
   })
 }
+
+/// Resolve a value.
+/// - name (string): The name of the value to resolve.
+/// - from (state): The scope to resolve the value in.
+/// -> (any): The resolved value.
+#let resolve(name, from: scope) = {
+  let real-name = stringfy(name)
+
+  return from.get().at(real-name, default: none)
+}

@@ -62,6 +62,19 @@
   [run `test-undef` successfully]
 }
 
+#let test-resolve = {
+  let scope = state("--test-resolve", (:))
+
+  define("foo", from: scope)(("f", "o", "o"))
+  context assert(defined("foo", from: scope))
+  context assert.eq(resolve("foo", from: scope), ("f", "o", "o"))
+
+  context assert(not defined("bAr", from: scope))
+  context assert.eq(resolve("bAr", from: scope), none)
+
+  [run `test-resolve` successfully]
+}
+
 = Run tests (#datetime.today().display())
 
 - #test-define
@@ -69,3 +82,4 @@
 - #test-from-toml
 - #test-sys
 - #test-undef
+- #test-resolve
